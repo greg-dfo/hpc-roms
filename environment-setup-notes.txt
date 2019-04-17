@@ -1,0 +1,40 @@
+sudo apt install gfortran
+sudo apt install gfortran --install-suggests
+sudo apt install libnetcdf-dev
+sudo apt install libopenmpi-dev
+mpifort --version
+gfortran --version
+mpifort --showme
+git clone https://github.com/kshedstrom/roms
+mv roms trunk
+mkdir ocean
+mv trunk/ ocean/
+cd ocean
+mkdir repository
+mv trunk/ repository/
+cd trunk
+
+cd ROMS/
+cd Bin/
+
+# I Edited build file to change a few things - mainly MPI library and fortran compiler I think
+code build.bash
+sudo apt install openmpi-bin openmpi-doc openmpi-common  libhdf5-openmpi-dev
+
+sudo apt install libnetcdff
+sudo apt install libnetcdff-dev
+sudo apt install libnetcdff-dev
+
+# If you don't specifiy -j it will be single core compile
+bash build.bash -j
+
+
+find | grep oceanM
+
+# these seemed to fail but I have no idea what i'm doing at this point
+./oceanM ../External/ocean_upwelling.in 
+cd ..
+ROMS/Bin/oceanM < ROMS/External/ocean_upwelling.in 
+
+mpirun -np 4 ocean ocean.in
+
