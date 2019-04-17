@@ -1,0 +1,86 @@
+# DS4v2
+
+ Elapsed CPU time (seconds):
+
+ Node   #    2 CPU:      73.521
+ Node   #    0 CPU:      73.127
+ Node   #    1 CPU:      73.954
+ Node   #    3 CPU:      74.332
+ Total:                 294.934
+
+ Nonlinear model elapsed CPU time profile, Grid: 01
+
+  Allocation and array initialization ..............         0.104  ( 0.0353 %)
+  Ocean state initialization .......................         0.046  ( 0.0156 %)
+  Reading of input data ............................         0.016  ( 0.0056 %)
+  Processing of input data .........................         0.542  ( 0.1839 %)
+  Processing of output time averaged data ..........        15.392  ( 5.2187 %)
+  Computation of vertical boundary conditions ......         1.548  ( 0.5249 %)
+  Computation of global information integrals ......         2.000  ( 0.6780 %)
+  Writing of output data ...........................         5.678  ( 1.9252 %)
+  Model 2D kernel ..................................       153.411  (52.0154 %)
+  2D/3D coupling, vertical metrics .................         3.879  ( 1.3152 %)
+  Omega vertical velocity ..........................         2.286  ( 0.7752 %)
+  Equation of state for seawater ...................         2.953  ( 1.0014 %)
+  3D equations right-side terms ....................         8.371  ( 2.8384 %)
+  3D equations predictor step ......................        29.441  ( 9.9822 %)
+  Pressure gradient ................................         4.383  ( 1.4861 %)
+  Harmonic mixing of tracers, S-surfaces ...........         2.628  ( 0.8911 %)
+  Harmonic stress tensor, S-surfaces ...............         4.651  ( 1.5770 %)
+  Corrector time-step for 3D momentum ..............        32.412  (10.9896 %)
+  Corrector time-step for tracers ..................        18.162  ( 6.1579 %)
+                                              Total:       287.904   97.6166
+
+ Nonlinear model message Passage profile, Grid: 01
+
+  Message Passage: 2D halo exchanges ...............        31.648  (10.7305 %)
+  Message Passage: 3D halo exchanges ...............        14.499  ( 4.9162 %)
+  Message Passage: 4D halo exchanges ...............         8.737  ( 2.9622 %)
+  Message Passage: data broadcast ..................         2.278  ( 0.7723 %)
+  Message Passage: data reduction ..................         0.157  ( 0.0533 %)
+  Message Passage: data gathering ..................         2.074  ( 0.7031 %)
+  Message Passage: synchronization barrier .........         0.001  ( 0.0003 %)
+                                              Total:        59.393   20.1379
+
+  Unique code regions profiled .....................       287.904   97.6166 %
+  Residual, non-profiled code ......................         7.029    2.3834 %
+
+
+ All percentages are with respect to total time =          294.934
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ Dynamic and Automatic memory (MB) usage for Grid 01:  41x80x16  tiling: 2x2
+
+     tile          Dynamic        Automatic            USAGE      MPI-Buffers
+
+        0            21.91             2.91            24.82             2.91
+        1            20.24             2.91            23.14             2.91
+        2            22.41             2.91            25.32             2.91
+        3            20.70             2.91            23.60             2.91
+
+    TOTAL            85.26            11.62            96.89            11.62
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+ ROMS/TOMS - Output NetCDF summary for Grid 01:
+             number of time records written in HISTORY file = 00000021
+             number of time records written in RESTART file = 00000002
+             number of time records written in AVERAGE file = 00000020
+
+ Analytical header files used:
+
+     ROMS/Functionals/ana_btflux.h
+     ROMS/Functionals/ana_grid.h
+     ROMS/Functionals/ana_initial.h
+     ROMS/Functionals/ana_smflux.h
+     ROMS/Functionals/ana_stflux.h
+     ROMS/Functionals/ana_vmix.h
+
+ ROMS/TOMS: DONE... Wednesday - April 17, 2019 -  8:32:17 PM
+
+real    1m15.871s
+user    4m25.881s
+sys     0m31.226s
+gcormier@greg-linny:~/roms/ROMS_run/upwelling$

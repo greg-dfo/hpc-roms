@@ -13,11 +13,12 @@ cd roms/trunk/ROMS/Bin/
 chmod 755 *
 
 # I Edited build file to change a few things - mainly MPI library and fortran compiler I think
-# line 228 change to  export     MY_HEADER_DIR=${MY_ROMS_SRC}/ROMS/Include
-# line 176 uncomment netcdf4
+# line 110, export        MY_ROOT_DIR=${HOME}/roms
 # line 170, comment
 # line 171, uncomment
-# line 110, export        MY_ROOT_DIR=${HOME}/roms
+# line 176 uncomment netcdf4
+# line 228 change to  export     MY_HEADER_DIR=${MY_ROMS_SRC}/ROMS/Include
+
 
 # If you don't specifiy -j it will be single core compile
 bash build_roms.bash -j
@@ -29,17 +30,11 @@ bash build_roms.bash -j
 # WITH -j
 #real    0m50.742s
 
-
-
-
-
-
 find | grep oceanM
 
 # these seemed to fail but I have no idea what i'm doing at this point
-./oceanM ../External/ocean_upwelling.in 
-cd ..
-ROMS/Bin/oceanM < ROMS/External/ocean_upwelling.in 
+#./oceanM ../External/ocean_upwelling.in 
+#ROMS/Bin/oceanM < ROMS/External/ocean_upwelling.in 
+#mpirun -np 4 ocean ocean.in
 
-mpirun -np 4 ocean ocean.in
-
+git clone https://greg.cormier@dfo-mpo.gc.ca:e0b183661cc6e2527eb6ea970b71b2c9f7efffc1@github.com/greg-dfo/roms
