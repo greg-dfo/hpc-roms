@@ -1,32 +1,33 @@
 sudo apt install gfortran
-sudo apt install gfortran --install-suggests
 sudo apt install libnetcdf-dev
 sudo apt install libopenmpi-dev
+sudo apt install subversion perl
+sudo apt install libnetcdff-dev netcdf-bin netcdf-doc
+
+# Might not be needed with base build
+sudo apt install openmpi-bin openmpi-doc openmpi-common libhdf5-openmpi-dev libhdf5-doc
+
 mpifort --version
 gfortran --version
 mpifort --showme
-git clone https://github.com/kshedstrom/roms
-mv roms trunk
-mkdir ocean
-mv trunk/ ocean/
-cd ocean
-mkdir repository
-mv trunk/ repository/
-cd trunk
 
-cd ROMS/
-cd Bin/
+git clone https://github.com/greg-dfo/roms
+
+cd roms/trunk/ROMS/Bin/
+chmod 755 *
+
+
+
 
 # I Edited build file to change a few things - mainly MPI library and fortran compiler I think
-code build.bash
-sudo apt install openmpi-bin openmpi-doc openmpi-common  libhdf5-openmpi-dev
-
-sudo apt install libnetcdff
-sudo apt install libnetcdff-dev
-sudo apt install libnetcdff-dev
+# line 228 change to  export     MY_HEADER_DIR=${MY_ROMS_SRC}/ROMS/Include
+# line 176 uncomment netcdf4
+# line 170, comment
+# line 171, uncomment
+# line 110, export        MY_ROOT_DIR=${HOME}/roms
 
 # If you don't specifiy -j it will be single core compile
-bash build.bash -j
+bash build_roms.bash -j
 
 
 find | grep oceanM
